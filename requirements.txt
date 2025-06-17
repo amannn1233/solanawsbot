@@ -1,3 +1,5 @@
 websockets>=11.0
 requests>=2.25
 python-dotenv>=1.0
+fastapi
+uvicorn[standard]
