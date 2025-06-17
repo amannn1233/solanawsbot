@@ -99,3 +99,20 @@ def main():
 
 if __name__ == "__main__":
     main()
+    import threading
+from fastapi import FastAPI
+import uvicorn
+
+app = FastAPI()
+
+@app.get("/health")
+def health():
+    return {"status": "ok"}
+
+if __name__ == "__main__":
+    # start your Solana listener in a daemon thread
+    t = threading.Thread(target=lambda: asyncio.run(listen_forever()), daemon=True)
+    t.start()
+    # start an HTTP server on $PORT
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
