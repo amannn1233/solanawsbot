@@ -1,0 +1,9 @@
+# Env secrets
+.env
+
+# Python
+__pycache__/
+*.pyc
+
+# Docker
+.dockerignore
